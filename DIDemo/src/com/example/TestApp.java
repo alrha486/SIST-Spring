@@ -1,0 +1,22 @@
+package com.example;
+
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class TestApp {
+	private ApplicationContext ctx;
+	
+	@Before
+	public void testBefore() {
+		this.ctx = new GenericXmlApplicationContext("config/beans.xml");
+	}
+	
+	@Test
+	public void testMethod() {
+		assertNotNull(this.ctx);
+	}
+}
