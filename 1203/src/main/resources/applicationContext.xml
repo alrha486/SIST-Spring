@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" /> -->
+	<!-- <context:annotation-config /> -->
+	
+	
+	<bean id="student2" class="com.example.Student2" init-method="initMethod" destroy-method="destroyMethod"
+				scope="prototype">
+		<constructor-arg>
+			<value>호날두</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>34</value>
+		</constructor-arg>
+	</bean>
+	
+</beans>
