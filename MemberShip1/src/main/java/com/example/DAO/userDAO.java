@@ -1,13 +1,13 @@
-package com.example.DAO;
+package com.example.dao;
 
 import java.util.List;
 
-import com.oracle.vo.UserVO;
+import com.example.vo.UserVO;
 
-public interface userDAO {
-	void create(UserVO uservo);
+public interface UserDao {
+	void create(UserVO userVo);
 	UserVO read(String userid);
 	List<UserVO> readAll();
-	void update(String userid);
+	void update(String userid, String city);
 	void delete(String userid);
 }

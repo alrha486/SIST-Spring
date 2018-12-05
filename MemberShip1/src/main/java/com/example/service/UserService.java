@@ -2,12 +2,12 @@ package com.example.service;
 
 import java.util.List;
 
-import com.oracle.vo.UserVO;
+import com.example.vo.UserVO;
 
 public interface UserService {
-	void createUser(UserVO uservo);
+	void createUser(UserVO userVo);
 	UserVO readUser(String userid);
-	List<UserVO> selectAllUser();
-	void updateUser(String userid);
+	List<UserVO> selectAllUsers();
+	void updateUser(String userid, String city);
 	void deleteUser(String userid);
 }
