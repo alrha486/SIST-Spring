@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="Member">
+	<resultMap type="memberVO" id="memberMap">
+		<result column="userid" property="userid" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result column="name" property="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result column="age" property="age" jdbcType="TINYINT" javaType="java.lang.Integer"/>
+		<result column="gender" property="gender" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result column="city" property="city" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<parameterMap type="hashMap" id="paraOneMemberMap">
+		<parameter property="userid" javaType="String" jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="result" javaType="java.sql.ResultSet" jdbcType="CURSOR" mode="OUT"
+		resultMap="memberMap"/>
+	</parameterMap>
+	<select id="selectOneSP" statementType="CALLABLE" parameterMap="paraOneMemberMap">
+		{ call sp_member_select_one(?,?) }
+	</select>
+	
+	
+	<parameterMap type="memberVO" id="paraMemberMap">
+		<parameter property="results" javaType="java.sql.ResultSet" 
+			jdbcType="CURSOR" mode="OUT" resultMap="memberMap"/>
+	</parameterMap>
+	<select id="selectAllSP" statementType="CALLABLE" parameterMap="paraMemberMap">
+		{  call sp_member_select_all(?)}
+	</select>
+	
+	<parameterMap type="memberVO" id="insertMap">
+		<parameter property="userid" mode="IN" javaType="String" jdbcType="VARCHAR"/>
+		<parameter property="name" mode="IN" javaType="String" jdbcType="VARCHAR"/>
+		<parameter property="age" mode="IN" javaType="Integer" jdbcType="TINYINT"/>
+		<parameter property="gender" mode="IN" javaType="String" jdbcType="VARCHAR"/>
+		<parameter property="city" mode="IN" javaType="String" jdbcType="VARCHAR"/>
+	</parameterMap>
+	<insert id="insertSP" parameterMap="insertMap" parameterType="memberVO">
+		{  call sp_member_insert(?,?,?,?,?)}
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+</mapper>

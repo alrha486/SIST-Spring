@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<script src="js/jquery.min.js"></script>
+<script>
+	$(function(){
+		$('#btnSend').bind('click',function(){
+			$.ajax({
+				url : "users",
+				method : "POST",
+				type : "json", // 받을 데이터의 형식
+				contentType : "application/json;charset=UTF-8", // 그쪽에서 보낼떄의 데이터 형식  
+				data : JSON.stringify({
+					"userid" : $('#userid').val(),
+					"name" : $('#name').val(),
+					"age" : $('#age').val(),
+					"gender" : $('.gender:checked').val(),
+					"city" : $('#city').val()
+				}),
+				success : function(data){
+					alert(data.code);
+					location.href="/1218";
+				},
+				error : function(err){
+					console.log("error발생 : " + err);
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h1 class="text-center">JOIN</h1>
+	<div class="text-center">
+		<ul>
+			<li>ID : <input type="text" name="userid" id="userid"/></li>
+			<li>이름 : <input type="text" name="name" id="name"/></li>
+			<li>나이 : <input type="number" name="age" id="age"/></li>
+			<li>성별 : <input type="radio" name="gender" value="남성" class="gender"/>남성 
+						   <input type="radio" name="gender" value="여성" class="gender"/>여성
+			</li>
+			<li>거주지 : <input type="text" name="city" id="city"/></li>
+			<li><input type="button" id="btnSend" value="가입하기" class="btn btn-success"/></li>
+		</ul>
+	</div>
+</body>
+</html>
