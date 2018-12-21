@@ -16,31 +16,26 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertBoard(BoardVO board) {
 		this.boardDao.create(board);
-
 	}
 
 	@Override
 	public void selectBoard(Map map) {
-		// TODO Auto-generated method stub
-
+		this.boardDao.read(map);
 	}
 
 	@Override
 	public void select(Map map) {
-		// TODO Auto-generated method stub
-
+		this.boardDao.readAll(map);
 	}
 
 	@Override
 	public void updateBoard(BoardVO board) {
-		// TODO Auto-generated method stub
-
+		this.boardDao.update(board);
 	}
 
 	@Override
 	public void deleteBoard(int idx) {
-		// TODO Auto-generated method stub
-
+		this.boardDao.delete(idx);
 	}
 
 	@Override

@@ -12,23 +12,25 @@
 	$(document).ready(function(){
 		$("#btnWrite").bind("click", function(){
 			$.ajax({
-				url : "/board/write", 
-				dataType : "json", // 받을 테이터의 타입
+				url : "write",
+				dataType : "json",
 				method : "POST",
-				contentType : "application/json;charset=UTF-8", // 보내는 데이터의 타입
+				contentType : 'application/json; charset=UTF-8',
 				data : JSON.stringify({
-					"name" : $('#txtName').val(),
-					"email" : $('#txtEmail').val(),
-					"title" : $('#txtTitle').val(),
-					"contents" : $('#txtContents').val()
+					"name" : $("#txtName").val(),
+					"email" : $("#txtEmail").val(),
+					"title" : $("#txtTitle").val(),
+					"contents" : $("#txtContents").val()
 				}),
 				success : function(data){
-					alert(data.code);
-					location.href="/"
+					if(data.code) {
+						alert("Insert Success");
+						location.href = "/board";
+					} else alert("Insert Failure\nPlease Try again.");
 				},
-				error: function(err){
-					console.log("err발생 = " + err);
-				}				
+				error : function(err){
+					console.log("Error 발생 : " + err);
+				}
 			});
 		});
 		$("#btnCancel").bind("click", function(){
@@ -62,9 +64,9 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="txtTitle" class="col-sm-3 control-label">내용</label>
+			<label for="txtContents" class="col-sm-3 control-label">내용</label>
 			<div class="col-sm-6">
-				<textarea class="form-control" rows="5" placeholder="Contents" id="txtContents"></textarea>
+				<textarea class="form-control" rows="5" id="txtContents" placeholder="Contents"></textarea>
 			</div>
 		</div>
 		<div class="form-group">

@@ -11,8 +11,8 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.example.biz">
-		<level value="info" />
+	<logger name="com.example">
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -31,6 +31,32 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+
+	<logger name="jdbc.splonly">
+		<level value="debug" />
+	</logger>
+	
+	<logger name="jdbc.sqltiming">
+		<level value="info" />
+	</logger>
+	
+	<logger name="jdbc.audit">
+		<level value="warn" />
+	</logger>
+	
+	<logger name="jdbc.resultset">
+		<level value="error" />
+	</logger>
+	
+	<logger name="jdbc.resultsettable">
+		<level value="error" />
+	</logger>
+	
+	<logger name="jdbc.connection">
+		<level value="info" />
+	</logger>
+
+
 
 	<!-- Root Logger -->
 	<root>

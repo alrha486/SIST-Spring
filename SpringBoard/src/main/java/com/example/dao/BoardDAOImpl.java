@@ -15,32 +15,29 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Override
 	public void create(BoardVO board) {
-		this.sqlSession.insert("board.insertSP", board);
-
+		this.sqlSession.insert("Board.insertSP", board);
 	}
 
 	@Override
 	public void read(Map map) {
-		// TODO Auto-generated method stub
+		this.sqlSession.selectOne("Board.selectOneSP", map);
 
 	}
 
 	@Override
 	public void readAll(Map map) {
-		// TODO Auto-generated method stub
-
+		this.sqlSession.selectList("Board.selectAllSP", map);
 	}
 
 	@Override
 	public void update(BoardVO board) {
-		// TODO Auto-generated method stub
+		this.sqlSession.update("Board.updateSP",board);
 
 	}
 
 	@Override
 	public void delete(int idx) {
-		// TODO Auto-generated method stub
-
+		this.sqlSession.delete("Board.deleteSP", idx);		
 	}
 
 	@Override
